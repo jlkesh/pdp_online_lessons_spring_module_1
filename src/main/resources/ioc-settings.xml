@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:application.properties"/>
+
+    <bean id="myBean" class="uz.pdp.springframeworkcore.MyBean"/>
+    <bean id="myBean2" class="uz.pdp.springframeworkcore.MyBean2" c:_0-ref="myBean"/>
+
+    <!--
+        <bean id="person" class="uz.pdp.springframeworkcore.Person">
+            <constructor-arg name="fullName" value="Elmurodov Javohir"/>
+            <constructor-arg name="age" value="28"/>
+        </bean>-->
+    <!--<bean id="person" class="uz.pdp.springframeworkcore.Person">
+
+        <constructor-arg name="fullName" value="Elmurodov Javohir"/>
+        <constructor-arg name="age" value="28"/>
+
+        <property name="fullName" value="Hasanov NurIslom"/>
+        <property name="age" value="18"/>
+    </bean>-->
+    <bean id="person" class="uz.pdp.springframeworkcore.Person"
+          factory-method="getInstance"
+          init-method="init"
+          destroy-method="destroy"
+          p:fullName="Elbek" p:age="21"
+    >
+        <property name="nickNames">
+            <list>
+                <value>PlaceHolder</value>
+                <value>Robin</value>
+                <value>John</value>
+                <value>Troubler</value>
+            </list>
+        </property>
+        <property name="nickNamesWithMap">
+            <map>
+                <entry key="1" value="John"/>
+                <entry key="2" value="Robin"/>
+            </map>
+        </property>
+    </bean>
+    <!--c:fullName="Elmurodov Javohir" c:age="28"-->
+    <bean id="baseDao" class="uz.pdp.springframeworkcore.BaseDAO"
+          c:url="${spring.datasource.url}"
+          c:user="${spring.datasource.user}"
+          c:password="${spring.datasource.password}"
+          c:database="${spring.datasource.database}"
+          c:schema="${spring.datasource.schema}"
+          c:driver="${spring.datasource.driver}"
+    />
+
+    <bean id="userService" class="uz.pdp.springframeworkcore.UserService" />
+    <bean id="roleService" class="uz.pdp.springframeworkcore.RoleService" />
+
+</beans>
