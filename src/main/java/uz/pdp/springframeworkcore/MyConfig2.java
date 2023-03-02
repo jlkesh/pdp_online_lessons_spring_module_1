@@ -4,10 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class MyConfig {
+public class MyConfig2 {
 
-    @Bean(name = "myBean", initMethod = "init", destroyMethod = "destroy")
-    public MyBean myBean() {
-        return new MyBean();
+    @Bean
+    public MyBean2 myBean2(MyBean myBean) {
+        return new MyBean2(myBean);
     }
 }
