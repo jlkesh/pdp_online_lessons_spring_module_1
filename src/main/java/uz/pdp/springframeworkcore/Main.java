@@ -1,7 +1,11 @@
 package uz.pdp.springframeworkcore;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello PDP!");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ioc-config.xml");
+        Performance performance = context.getBean(Performance.class);
+        performance.perform();
     }
 }
