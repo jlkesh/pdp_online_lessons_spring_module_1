@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"
+   xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Text</title>
+</head>
+<body>
+<div th:with="n=17">
+    <p th:text="|${n} - 3 = ${n - 3}|"></p>
+    <p th:text="|${n} + 3 = ${n + 3}|"></p>
+    <p th:text="|${n} / 3 = ${n / 3}|"></p>
+    <p th:text="|${n} * 3 = ${n * 3}|"></p>
+    <p th:text="|${n} % 3 = ${n % 3}|"></p>
+    <p th:text="|${n} div 3 = ${n div 3}|"></p>
+    <p th:text="|${n} mod 3 = ${n mod 3}|"></p>
+</div>
+</body>
+</html>

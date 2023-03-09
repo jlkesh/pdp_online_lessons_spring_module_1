@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment :: head(~{::title},~{::link})">
+    <title>Conditional Page</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<nav th:replace="fragment :: header">
+</nav>
+<div th:with="n = 12">
+    <p th:if="${n == 12}">12 eq to 12</p>
+    <p th:if="${n >= 12}">12 ge 12</p>
+    <p th:if="${n ne 12}">12 ne 12</p>
+    <p th:unless="${n != 12}">12 ne 12</p>
+</div>
+<div th:with="role = 'user'">
+    <div th:switch="${role}">
+        <p th:case="'ADMIN'">User is admin</p>
+        <p th:case="'MANAGER'">User is manager</p>
+        <p th:case="*">User just simple user do not have authorities</p>
+    </div>
+</div>
+
+<section th:replace="fragment :: js"></section>
+
+</body>
+</html>

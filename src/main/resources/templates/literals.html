@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Text</title>
+</head>
+<body>
+
+<p th:text="'hello' + ' pdp !'"></p>
+<p th:text="'Welcome to Profile Page ' + ${user}"></p>
+<p th:text="|Welcome to Profile Page  ${user}|"></p>
+<!--<p th:text="Welcome to Profile Page  ${user}"></p>-->
+
+<div th:with="role='Admin'">
+    <h1 th:text="${role}"></h1>
+</div>
+
+
+</body>
+</html>

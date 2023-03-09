@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"
+   xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Text</title>
+</head>
+<body>
+<div th:with="n=17">
+    <p th:text="|'17 > 3 = ' ${n > 3}|"></p>
+    <p th:text="|'17 > 3 = ' ${n gt 3}|"></p>
+    <p th:text="|'17 >= 3 = ' ${n ge 17}|"></p>
+    <p th:text="|'17 != 17 = ' ${n != 17}|"></p>
+    <p th:text="|'17 != 13 = ' ${n != 13}|"></p>
+    <p th:text="|'17 != 13 = ' ${n ne 13}|"></p>
+    <p th:text="|'17 == 17 = ' ${n eq 17}|"></p>
+</div>
+</body>
+</html>

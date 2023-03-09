@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+   xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Text</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<ul>
+    <li th:text="${blog.id}"></li>
+    <li th:text="${blog.title}"></li>
+    <li th:text="${blog.body}"></li>
+</ul>
+
+<ul th:object="${blog}">
+    <li th:text="*{id}"></li>
+    <li th:text="*{title}"></li>
+    <li th:text="*{body}"></li>
+</ul>
+
+<div>
+    <a th:href="@{/text/{id}/{userid}/details(id=1,userid=${blog.id})}">Go Text Page</a>
+</div>
+<div>
+    <a th:href="@{'/text/'+ 1 + '/'+${blog.id} + '/details'}">Go Text Page</a>
+</div>
+
+</body>
+</html>

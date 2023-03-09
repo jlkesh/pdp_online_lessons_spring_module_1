@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"
+   xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment :: head(~{::title}, ~{::link})">
+    <title>Each Example Page</title>
+    <link rel="stylesheet" href="/css/main_each.css">
+</head>
+<body>
+<ul>
+ <!--<th:block th:each="operation : ${operations}">-->
+    <li th:each="operation : ${operations}" th:text="${operation}"></li>
+ <!--</th:block>-->
+</ul>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>TITLE</th>
+            <th>BODY</th>
+            <th>DELETE</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--<th:block th:each="blog: ${blogs}" th:object="${blog}">-->
+            <tr th:each="blog: ${blogs}" th:object="${blog}">
+                <td th:text="${blogStat.count}"></td>
+                <td th:text="*{title}"></td>
+                <td th:text="*{body}"></td>
+                <td>
+                    <button class="btn btn-danger" th:onclick="deleteBlog([[*{id}]])">Delete</button>
+                </td>
+            </tr>
+        <!--</th:block>-->
+    </tbody>
+</table>
+<div th:with="user = 'Javohir'">
+    <p th:text="${'Hello '+ user}"></p>
+    <p th:text="|Hello ${user}|"></p>
+    <p>Hello [[${user}]]</p>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Text</title>
+</head>
+<body>
+<form>
+    <div>
+        Title : <input type="text" name="title" th:attr="value=${blog.title}">
+    </div>
+    <div>
+        Body : <input type="text" name="body" th:attr="value=${blog.body}">
+    </div>
+    <input type="submit" value="Update Blog">
+</form>
+
+</body>
+</html>
