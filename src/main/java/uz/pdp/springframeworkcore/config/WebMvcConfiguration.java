@@ -5,6 +5,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -16,13 +20,17 @@ import org.thymeleaf.templatemode.TemplateMode;
 @Configuration
 @ComponentScan("uz.pdp.springframeworkcore")
 @EnableWebMvc
+@PropertySource("classpath:application.properties")
 public class WebMvcConfiguration implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
+    private final Environment env;
 
     @Autowired
-    public WebMvcConfiguration(ApplicationContext applicationContext) {
+    public WebMvcConfiguration(ApplicationContext applicationContext,
+                               Environment env) {
         this.applicationContext = applicationContext;
+        this.env = env;
     }
 
 
@@ -60,5 +68,23 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/static/js/");
         registry.addResourceHandler("/static/*")
                 .addResourceLocations("classpath:/static/");
+    }
+
+
+    @Bean
+    public DriverManagerDataSource dataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setUrl(env.getRequiredProperty("spring.datasource.jdbc.url"));
+        dataSource.setUsername(env.getRequiredProperty("spring.datasource.jdbc.username"));
+        dataSource.setPassword(env.getRequiredProperty("spring.datasource.jdbc.password"));
+        dataSource.setDriverClassName(env.getRequiredProperty("spring.datasource.jdbc.driver"));
+        dataSource.setSchema(env.getRequiredProperty("spring.datasource.jdbc.schema"));
+        return dataSource;
+    }
+
+
+    @Bean
+    public NamedParameterJdbcTemplate namedParameterJdbcTemplate() {
+        return new NamedParameterJdbcTemplate(dataSource());
     }
 }

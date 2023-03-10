@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head th:replace="fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <title>Register Page</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-2 mt-5">
+            <h1 class="text-center">Register Page</h1>
+            <form method="post" action="/auth/register">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <a href="/auth/login">Login</a>
+            </form>
+        </div>
+    </div>
+</div>
+<section th:replace="fragments :: js_links"></section>
+</body>
+</html>
