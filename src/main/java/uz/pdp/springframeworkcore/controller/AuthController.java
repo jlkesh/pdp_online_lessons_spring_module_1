@@ -44,7 +44,6 @@ public class AuthController {
         AuthUser authUser = AuthUser.builder()
                 .username(dto.username())
                 .password(passwordEncoder.encode(dto.password()))
-                .role("USER")
                 .build();
         Long id = authUserDao.save(authUser);
         System.out.println(id);

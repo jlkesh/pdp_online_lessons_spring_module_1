@@ -2,17 +2,14 @@ package uz.pdp.springframeworkcore.domains;
 
 import lombok.*;
 
-import java.util.List;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @ToString
-public class AuthUser {
+public class AuthPermission {
     private Long id;
-    private String username;
-    private String password;
-    private List<AuthRole> roles;
+    private String name;
+    private String code;
 }
