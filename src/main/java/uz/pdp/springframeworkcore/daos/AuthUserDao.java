@@ -22,7 +22,7 @@ public class AuthUserDao {
     }
 
     public Long save(@NonNull AuthUser authUser) {
-        var sql = "insert into authuser(username, password, role) values(:username, :password, :role)";
+        var sql = "insert into authuser(username, password) values(:username, :password)";
 
         var paramSource = new MapSqlParameterSource()
                 .addValue("username", authUser.getUsername())

@@ -18,7 +18,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
         jsr250Enabled = true
 )
 public class SecurityConfigurer {
-    public static final String[] WHITE_LIST = {"/css/**", "/auth/login", "/auth/register"};
+    public static final String[] WHITE_LIST = {
+            "/css/**",
+            "/home",
+            "/auth/login",
+            "/auth/register"
+    };
     private final CustomUserDetailsService userDetailsService;
     private final CustomAuthenticationFailureHandler authenticationFailureHandler;
 
@@ -30,7 +35,6 @@ public class SecurityConfigurer {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable();
         http.authorizeHttpRequests()
                 .requestMatchers(WHITE_LIST).permitAll()
                 /*.requestMatchers("/admin").hasRole("ADMIN")

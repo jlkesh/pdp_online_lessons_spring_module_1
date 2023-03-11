@@ -1,4 +1,4 @@
-package uz.pdp.springframeworkcore.controller;
+package uz.pdp.springframeworkcore.daos;
 
 
 import org.springframework.security.core.Authentication;

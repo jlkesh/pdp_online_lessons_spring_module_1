@@ -2,6 +2,7 @@ package uz.pdp.springframeworkcore.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,5 +29,11 @@ public class HomeController {
         return "User Page";
     }
 
+
+    @PostMapping("/csrf/test")
+    public String csrfTest() {
+        System.out.println("Request accepted Successfully");
+        return "redirect:/home";
+    }
 
 }
