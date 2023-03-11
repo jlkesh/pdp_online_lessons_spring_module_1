@@ -30,6 +30,10 @@ public class CustomUserDetails implements UserDetails {
         return authorities;
     }
 
+    public AuthUser getAuthUser() {
+        return authUser;
+    }
+
     @Override
     public String getPassword() {
         return authUser.getPassword();
