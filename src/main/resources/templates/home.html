@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en"
+ xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<h1 th:text="#{welcome}"></h1>
+<h1 th:text="#{welcome2}"></h1>
+<h1 th:text="${#messages.msg('welcome3','Javohir')}"></h1>
+</body>
+</html>
