@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>404</title>
+</head>
+<body>
+<h1 th:text="${message}"></h1>
+<p th:text="${path}"></p>
+<a th:href="@{${back_path}}">Back</a>
+</body>
+</html>

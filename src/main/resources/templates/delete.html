@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Books Page</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div th:if="${error}">
+    <h1 th:text="${error}"></h1>
+</div>
+<div th:unless="${error}">
+    <h1> Book Delete Page </h1>
+    <ul th:object="${book}">
+        <li th:text="*{id}"></li>
+        <li th:text="*{title}"></li>
+        <li th:text="*{author}"></li>
+    </ul>
+</div>
+<a href="/book">Back</a>
+</body>
+</html>
