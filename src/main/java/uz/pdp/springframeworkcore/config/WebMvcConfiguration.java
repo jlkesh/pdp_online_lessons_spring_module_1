@@ -23,6 +23,7 @@ import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
+import uz.pdp.springframeworkcore.interceptor.LogInterceptor;
 
 import java.util.Locale;
 
@@ -119,5 +120,6 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
         LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
         interceptor.setParamName("lang");
         registry.addInterceptor(interceptor);
+        registry.addInterceptor(new LogInterceptor());
     }
 }
