@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Books Page</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+        .error{
+            color: red;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+<form action="/book/add" method="post" th:object="${dto}">
+    <!--<ul th:if="${#fields.hasAnyErrors()}">
+        <li th:each="err : ${#fields.errors()}" th:text="${err}" class="red"></li>
+    </ul>-->
+    Title : <input type="text" name="title" th:field="*{title}" /> <br>
+    <div th:if="${#fields.hasErrors('title')}">
+        <span th:each="er : ${#fields.errors('title')}" th:text="#{${er}}" class="error"></span>
+    </div>
+    Author : <input type="text" name="author" th:field="*{author}" /> <br>
+    <div th:if="${#fields.hasErrors('author')}">
+        <span th:each="er : ${#fields.errors('author')}" th:text="${er}" class="error"></span>
+    </div>
+    <input type="submit" value="Save Book">
+</form>
+<a href="/book">Back</a>
+</body>
+</html>

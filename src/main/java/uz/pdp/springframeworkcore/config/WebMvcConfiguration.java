@@ -102,6 +102,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
         messageSource.setBasenames("classpath:/i18n/messages");
+        messageSource.setUseCodeAsDefaultMessage(true);
         return messageSource;
     }
 
